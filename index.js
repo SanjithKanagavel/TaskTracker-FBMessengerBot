@@ -20,16 +20,27 @@ firebase.initializeApp({
   databaseURL: process.env.FIREBASE_DATABASE_URL
 });
 
-const firebaseDB = firebase.database();
+
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
         if (event.message && event.message.text) {
-            var userRef = firebaseDB.ref("Messages/");
+            let db = firebase.database();
+            let ref = db.ref("server/saving-data/fireblog");
+            var usersRef = ref.child("users");
+            usersRef.set({
+              alanisawesome: {
+                date_of_birth: "June 23, 1912",
+                full_name: "Alan Turing"
+              },
+              gracehop: {
+                date_of_birth: "December 9, 1906",
+                full_name: "Grace Hopper"
+              }
+            });
             let text = event.message.text
-            userRef.set({"sender":"text"});
             sendTextMessage(sender, "Echo message: " + text.substring(0, 200))
         }
     }
