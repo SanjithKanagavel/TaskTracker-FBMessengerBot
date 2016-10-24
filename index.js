@@ -41,9 +41,9 @@ app.post('/webhook/', function (req, res) {
               }
             }, function(error) {
                 if (error) {
-                  alert("Data could not be saved." + error);
+                  console.log("Data could not be saved." + error);
                 } else {
-                  alert("Data saved successfully.");
+                  console.log("Data saved successfully.");
                 }
               });
             let text = event.message.text
