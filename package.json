@@ -1,0 +1,24 @@
+{
+  "name": "tasktracker",
+  "version": "1.0.0",
+  "description": "Developing a messenger bot that keeps track of your daily tasks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanjithKanagavel/TaskTracker-FBMessengerBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SanjithKanagavel/TaskTracker-FBMessengerBot/issues"
+  },
+  "homepage": "https://github.com/SanjithKanagavel/TaskTracker-FBMessengerBot#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.75.0"
+  }
+}
