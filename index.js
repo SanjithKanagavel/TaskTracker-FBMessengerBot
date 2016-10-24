@@ -33,7 +33,7 @@ app.post('/webhook/', function (req, res) {
                 } else {
                   console.log("Data saved successfully.");
                 }
-              });*/
+              });
         }
     }
     res.sendStatus(200)
