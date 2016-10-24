@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "task-tracker-ef633",
+  "private_key_id": "2c4c0dfb26a7022526846130c1a78568922d86dd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDFnVWDhQnPJUtY\nNIMfckVuWIOyE9QmnBEU8fJ+BwRXeRVohH2T4Nm7W5MtKqPZvDYWIEA/c+uLgC5z\nnF5UdgdZ9NF1ufFXq6GB24OtwO7uvxvVunYhtY/fT8YnD2g9jjLyOIkMyb9N7bvl\n/OYFqOe8IBSchPpWBxwigVa3NZHDBEB1/D3uTTdbWaH7yZqIQ6/1QCadg2iTY2s5\nM0Ts4V6fp5ilWticH7D8bbSGjfhoXOQb5wWXl9NV/YY1bHm3ZM7/vddKNaQc9H0i\nU90st00Wcwfr2Co75VStDVlaQRKOIWySJVFDq0dnfQd4kEkwYWKf9jWt+atH3MiT\naGJI8ynlAgMBAAECggEAYGP5FTjsavUXBkQ+/TTA9y0Ht/ICFn8jueK2VJDZpk0y\nixOtKVeQ/NmTNYHKAGfUvgAnNow1hYsVnWDVhj84IMHQ9aqoNQpLskq/tR4Zrazc\nR+k2vASS0+tWjTDvuK7G3O2EtA8oWDuw3mL4VCRqPJItW5dlgFbhe1c5VA42Njfe\nCGN2LRbrvhWnm40uL53k1LSB/h4NygKot+qabOmR65JPOKwIUiqiqtEppaaw7H5g\nAYG4HwSUGlXPKdQZ1WtOei3gw22f6iYjEOXTUqxUogjvugo3XHBoOUu43OaEjINI\n/YH1GFKTi/fcuZL0Fe7GUyZxN6vX6ouGStLQD/bm1QKBgQDr/cmT8KRI/gRqT6gf\nHHE3BNdfY4zuK7lgQM4y2iyXAVhjQvRQ+OiiMuHC2+UPEJZEQ5DafcyqXrTTjmqV\nU8KezG0HQ0DYAIWfFhxW9Gjk76JaismpnBtujLpaiDYCOeH/6ft8ROwOY1Tjt4+t\nq7nd1OeR7eGKQ7XJNyGYKoQQ5wKBgQDWXpNVz8egy+puB+ITJ8BWkBdcVc6hOnxu\nE22YvmtWXU31/bwS+L5d23JMP+ILupZe4g2FOlFKFK7Y4v7Bb955rB4OhWtnpjb5\n3DE2RwtTxIZ1aNtuOVU2mofZP65liWZfYX+7VZtvUuosmXv0EwzinEyAIPQimUdR\n9HDLM6f5UwKBgQC+SfT56qe+B72tr6+D7p5H3AqCazZfcjhXKcpa7NvZo4cO+xUg\nGaUT7O1n/4HzJM/WGZk65QdcNWOf1w2QfWrIO1SK76rgwYL9ZYnSf9/5AlWqppC3\nyB3ChY1apMzP/LaEcbqMWNLzQxtXR1N+maMVAbD8VZFwuOpjZqYbGeVF7wKBgGpd\nhvF/JWhNhcaOtsgWY0MQP+ca1Gn/YRolHa46XXv+094IxjcLoTlk13OqBvkW3eG6\nfEbsxsThOlh3WTyVy2fH1SoTXVWSjZiwfuKVobMwwh6jpq0sWXG8f0d2Z4wN/vO4\npu5G7dbw5yy2A2D5ytzt/K9eqoQ4VcD+brEEsoXtAoGABs9QfALb3Pli/hde9hM4\nDz0vD65L7wtIKbmtA/5IRrXnI4sS5S/7pBQzDQITOBId11K6oLpuf/mWZ81qB8ab\nb6ZurG9eCbS6RLh0giwYKWWukvDxrIIGdFWdQO0oVGcZvPtwxekveO564JRNuyvs\nfOiLX3lWwK2QKUlw1cMaRRI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "heroku@task-tracker-ef633.iam.gserviceaccount.com",
+  "client_id": "114205357944977147605",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/heroku%40task-tracker-ef633.iam.gserviceaccount.com"
+}

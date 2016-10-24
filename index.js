@@ -1,24 +1,24 @@
 'use strict'
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
+const firebase = require("firebase")
 
 app.set('port', (process.env.PORT || 5000))
-
-// Process application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
-
-// Process application/json
 app.use(bodyParser.json())
-
-// Index route
 app.get('/', function (req, res) {
-    res.send('Hello world, I am a chat bot')
+    res.send('Hello folks, I am a tracker bot who tracks your tasks.')
 })
-
-// for Facebook verification
+firebase.initializeApp({
+  serviceAccount: {
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_MAIL,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY
+  },
+  databaseURL: process.env.FIREBASE_DATABASE_URL
+});
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
@@ -26,7 +26,7 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+            sendTextMessage(sender, "Echo message: " + text.substring(0, 200))
         }
     }
     res.sendStatus(200)
