@@ -11,12 +11,10 @@ app.use(bodyParser.json())
 app.get('/', function (req, res) {
     res.send('Hello folks, I am a tracker bot who tracks your tasks.')
 })
-function firebaseInit() {
-  firebase.initializeApp({
+
+firebase.initializeApp({
     databaseURL: process.env.FIREBASE_DATABASE_URL
-  });
-  console.log("Firebase Initialized")
-}
+});
 
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
@@ -24,9 +22,19 @@ app.post('/webhook/', function (req, res) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
         if (event.message && event.message.text) {
-
             let text = event.message.text
+            console.log(req.body.entry[0].messaging);
             sendTextMessage(sender, "I am you: " + text.substring(0, 200))
+            /*firebase.database().ref('/User').set({
+            username: "test",
+            email: "test@mail.com"
+            }, function(error) {
+                if (error) {
+                  console.log("Data could not be saved." + error);
+                } else {
+                  console.log("Data saved successfully.");
+                }
+              });*/
         }
     }
     res.sendStatus(200)
@@ -53,15 +61,4 @@ function sendTextMessage(sender, text) {
 // Spin up the server
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
-    firebaseInit();
-    firebase.database().ref('/').set({
-    username: "test",
-    email: "test@mail.com"
-    }, function(error) {
-        if (error) {
-          console.log("Data could not be saved." + error);
-        } else {
-          console.log("Data saved successfully.");
-        }
-      });
 })
