@@ -39,9 +39,15 @@ app.post('/webhook/', function (req, res) {
                 date_of_birth: "December 9, 1906",
                 full_name: "Grace Hopper"
               }
-            });
+            }, function(error) {
+                if (error) {
+                  alert("Data could not be saved." + error);
+                } else {
+                  alert("Data saved successfully.");
+                }
+              });
             let text = event.message.text
-            sendTextMessage(sender, db+ref+usersRef+"Echo message: " + text.substring(0, 200))
+            sendTextMessage(sender, "I am you: " + text.substring(0, 200))
         }
     }
     res.sendStatus(200)
