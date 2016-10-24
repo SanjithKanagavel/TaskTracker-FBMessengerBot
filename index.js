@@ -20,6 +20,29 @@ firebase.initializeApp({
   databaseURL: process.env.FIREBASE_DATABASE_URL
 });
 
+let db = firebase.database();
+firebase.database().ref('/').set({
+username: "test",
+email: "test@mail.com"
+});
+let ref = db.ref("server/saving-data/fireblog");
+var usersRef = ref.child("users");
+usersRef.set({
+  alanisawesome: {
+    date_of_birth: "June 23, 1912",
+    full_name: "Alan Turing"
+  },
+  gracehop: {
+    date_of_birth: "December 9, 1906",
+    full_name: "Grace Hopper"
+  }
+}, function(error) {
+    if (error) {
+      console.log("Data could not be saved." + error);
+    } else {
+      console.log("Data saved successfully.");
+    }
+  });
 
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
@@ -27,29 +50,7 @@ app.post('/webhook/', function (req, res) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
         if (event.message && event.message.text) {
-            let db = firebase.database();
-            firebase.database().ref('/').set({
-    username: "test",
-    email: "test@mail.com"
-});
-            let ref = db.ref("server/saving-data/fireblog");
-            var usersRef = ref.child("users");
-            usersRef.set({
-              alanisawesome: {
-                date_of_birth: "June 23, 1912",
-                full_name: "Alan Turing"
-              },
-              gracehop: {
-                date_of_birth: "December 9, 1906",
-                full_name: "Grace Hopper"
-              }
-            }, function(error) {
-                if (error) {
-                  console.log("Data could not be saved." + error);
-                } else {
-                  console.log("Data saved successfully.");
-                }
-              });
+
             let text = event.message.text
             sendTextMessage(sender, "I am you: " + text.substring(0, 200))
         }
