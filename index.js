@@ -23,11 +23,10 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
-            console.log(req.body.entry[0].messaging);
-            sendTextMessage(sender, "I am you: " + text.substring(0, 200))
-            /*firebase.database().ref('/User').set({
-            username: "test",
-            email: "test@mail.com"
+            console.log(req.body.entry);
+            sendTextMessage(sender,text.substring(0, 200))
+            firebase.database().ref('/Chats/'+sender).set({
+            event.timestamp : text
             }, function(error) {
                 if (error) {
                   console.log("Data could not be saved." + error);
