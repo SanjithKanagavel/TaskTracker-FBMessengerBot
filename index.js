@@ -41,7 +41,7 @@ app.post('/webhook/', function (req, res) {
               }
             });
             let text = event.message.text
-            sendTextMessage(sender, "Echo message: " + text.substring(0, 200))
+            sendTextMessage(sender, db+ref+usersRef+"Echo message: " + text.substring(0, 200))
         }
     }
     res.sendStatus(200)
