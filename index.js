@@ -26,8 +26,8 @@ app.post('/webhook/', function (req, res) {
             let ts = event.timestamp
             console.log(req.body.entry);
             sendTextMessage(sender,text.substring(0, 200))
-            firebase.database().ref('/Chats/'+sender).set({
-            ts : text
+            firebase.database().ref('/Chats/'+sender+"/"+ts).set({
+            "message" : text
             }, function(error) {
                 if (error) {
                   console.log("Data could not be saved." + error);
