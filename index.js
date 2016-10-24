@@ -28,6 +28,10 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let db = firebase.database();
+            firebase.database().ref('/').set({
+    username: "test",
+    email: "test@mail.com"
+});
             let ref = db.ref("server/saving-data/fireblog");
             var usersRef = ref.child("users");
             usersRef.set({
