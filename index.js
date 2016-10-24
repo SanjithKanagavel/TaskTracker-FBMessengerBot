@@ -13,11 +13,6 @@ app.get('/', function (req, res) {
 })
 function firebaseInit() {
   firebase.initializeApp({
-    serviceAccount: {
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_MAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY
-    },
     databaseURL: process.env.FIREBASE_DATABASE_URL
   });
   console.log("Firebase Initialized")
