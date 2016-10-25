@@ -91,9 +91,10 @@ app.post('/webhook/', function (req, res) {
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
-          if(text == "create_task") {
+        let payload = event.postback.payload
+          if(payload == "create_task") {
             sendTextMessage(sender, "Great! Lets create them now.", token)
-          } else if(text == "view_task") {
+          } else if(payload == "view_task") {
             sendTextMessage(sender, "Great! Lets view them now.", token)
           }
           else {
