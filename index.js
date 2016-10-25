@@ -69,7 +69,8 @@ let viewTask = {
         "type": "template",
         "payload": {
             "template_type": "generic",
-            "elements": [{                
+            "elements": [{
+                "title": "View Task",
                 "buttons": [{
                     "type": "postback",
                     "title": "Today task",
