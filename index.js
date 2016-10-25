@@ -49,25 +49,46 @@ let createTask = {
         "payload": {
             "template_type": "generic",
             "elements": [{
-                "title": "Create your task",
-                "subtitle": "Creating task is simple",
+                "title": "Task Details",
                 "buttons": [{
                     "type": "postback",
-                    "title": "Create Task",
-                    "payload": "create_task",
+                    "title": "Add Description",
+                    "payload": "desc",
                 },{
                     "type": "postback",
-                    "title": "Create Task",
-                    "payload": "create_task",
-                },{
-                    "type": "postback",
-                    "title": "Create Task",
-                    "payload": "create_task",
+                    "title": "Add Date & Time",
+                    "payload": "date_time",
                 }],
             }]
         }
     }
 }
+
+let viewTask = {
+    "attachment": {
+        "type": "template",
+        "payload": {
+            "template_type": "generic",
+            "elements": [{
+                "title": "View Task",
+                "buttons": [{
+                    "type": "postback",
+                    "title": "Today task",
+                    "payload": "today_task",
+                },{
+                    "type": "postback",
+                    "title": "Upcoming tasks",
+                    "payload": "upcoming_task",
+                },{
+                    "type": "postback",
+                    "title": "Recent tasks",
+                    "payload": "recent_task",
+                }],
+            }]
+        }
+    }
+}
+
 app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -121,13 +142,25 @@ app.post('/webhook/', function (req, res) {
         let text = JSON.stringify(event.postback)
         let payload = event.postback.payload
           if(payload == "create_task") {
-            sendTextMessage(sender, "Great! Lets create them now.", token)
-            sendGenericMessage(sender,1)
+            sendTextMessage(sender, "Great! Lets create them now. Type in the below format to create a task.", token)
+            sendTextMessage(sender, "description-dd/mm/yyy\ndescription-today\ndescription-tomorrow\n", token)
+            //sendGenericMessage(sender,1)
           } else if(payload == "view_task") {
             sendTextMessage(sender, "Great! Lets view them now.", token)
-          }
-          else if(payload == "delete_task") {
+            sendGenericMessage(sender,2)
+          } else if(payload == "delete_task") {
             sendTextMessage(sender, "Great! Lets view them now.", token)
+            sendGenericMessage(sender,3)
+          } else if(payload == "desc") {
+
+          } else if(payload == "date_time") {
+
+          } else if(payload == "today_task") {
+
+          } else if(payload == "upcoming_task") {
+
+          } else if(payload == "recent_task") {
+
           }
           continue
       }
@@ -161,6 +194,9 @@ function sendGenericMessage(sender,index) {
   }
   else if(index == 1) {
     messageData = createTask
+  }
+  else if(index == 2){
+    messageData = viewTask
   }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
