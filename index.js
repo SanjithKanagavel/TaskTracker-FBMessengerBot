@@ -97,18 +97,24 @@ function sendGenericMessage(sender) {
                         "type": "postback",
                         "title": "Create Task",
                         "payload": "create_task",
-                    },{
+                    }],
+                }, {
+                    "title": "View Tasks",
+                    "subtitle": "View your task",
+                    "image_url": "http://www.pd4pic.com/images/icon-folder-open-button-documents-document.png",
+                    "buttons": [{
                         "type": "postback",
-                        "title": "View Today's Task",
-                        "payload": "view_today_task",
-                    },{
+                        "title": "View Task",
+                        "payload": "view_task",
+                    }],
+                },{
+                    "title": "Delete Task",
+                    "subtitle": "Delete your task",
+                    "image_url": "http://blogs.cs.st-andrews.ac.uk/routing-island/files/2012/03/4-Delete.png",
+                    "buttons": [{
                         "type": "postback",
-                        "title": "View Upcoming Tasks",
-                        "payload": "view_upcoming_task",
-                    },{
-                        "type": "postback",
-                        "title": "Views Tasks Within Range",
-                        "payload": "view_range_task",
+                        "title": "Delete Task",
+                        "payload": "delete_task",
                     }],
                 }]
             }
