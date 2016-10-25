@@ -86,17 +86,13 @@ function sendGenericMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "",
+                    "title": "First card",
                     "subtitle": "Element #1 of an hscroll",
                     "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                     "buttons": [{
-                        "type": "postback",
-                        "title": "Create Event",
-                        "payload": "Okay. Lets Create task for you.",
-                    },{
-                        "type": "postback",
-                        "title": "View Event",
-                        "payload": "Okay. Lets view your tasks.",
+                        "type": "web_url",
+                        "url": "https://www.messenger.com",
+                        "title": "web url"
                     }, {
                         "type": "postback",
                         "title": "Postback",
