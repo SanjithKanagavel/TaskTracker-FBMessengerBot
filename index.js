@@ -151,15 +151,15 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, "Great! Lets view them now.", token)
             sendGenericMessage(sender,3)
           } else if(payload == "desc") {
-
+            sendTextMessage(sender, "Great! Lets view them now.", token)
           } else if(payload == "date_time") {
 
           } else if(payload == "today_task") {
-
+            sendTextMessage(sender, "Today Task.", token)
           } else if(payload == "upcoming_task") {
-
+            sendTextMessage(sender, "Upcoming Task.", token)
           } else if(payload == "recent_task") {
-
+            sendTextMessage(sender, "Recent Task.", token)
           }
           continue
       }
