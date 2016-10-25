@@ -216,7 +216,7 @@ function sendGenericMessage(sender,index) {
 // Spin up the server
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
-    for ( ; ; ) {
+    for ( int i =0 ; i<10 ; i++ ) {
       sendTextMessage(1108340685901481,"Hi");
     }
 })
