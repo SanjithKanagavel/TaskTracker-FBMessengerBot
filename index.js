@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
       let sender = event.sender.id
       if (event.message && event.message.text) {
         let text = event.message.text
-        if (text === 'Hi') {
+        if (text === 'Generic') {
             sendGenericMessage(sender)
             continue
         }
@@ -97,6 +97,19 @@ function sendGenericMessage(sender) {
                         "type": "postback",
                         "title": "View Event",
                         "payload": "Okay. Lets view your tasks.",
+                    }, {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, {
+                    "title": "Second card",
+                    "subtitle": "Element #2 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
                     }],
                 }]
             }
