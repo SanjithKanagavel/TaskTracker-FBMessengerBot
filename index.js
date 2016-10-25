@@ -21,6 +21,7 @@ let generalMessage = {
                     "payload": "create_task",
                 }],
             }, {
+                "title": "View Tasks",
                 "subtitle": "View your task",
                 "image_url": "http://www.pd4pic.com/images/icon-folder-open-button-documents-document.png",
                 "buttons": [{
@@ -68,8 +69,7 @@ let viewTask = {
         "type": "template",
         "payload": {
             "template_type": "generic",
-            "elements": [{
-                "title": "View Task",
+            "elements": [{                
                 "buttons": [{
                     "type": "postback",
                     "title": "Today task",
