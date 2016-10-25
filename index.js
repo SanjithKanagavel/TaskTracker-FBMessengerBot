@@ -127,7 +127,12 @@ app.post('/webhook/', function (req, res) {
         }
         else if (text.startsWith("del:")) {
           //delete task section
-        } else {
+        } else if(text.startsWith("help -add")) {
+
+        } else if(text.startsWith("help -view")) {
+
+        } else if(text.startsWith("help -del")) {
+        else {
           sendGenericMessage(sender,0)
           continue
         }
@@ -137,11 +142,11 @@ app.post('/webhook/', function (req, res) {
         let text = JSON.stringify(event.postback)
         let payload = event.postback.payload
           if(payload == "create_task") {
-            sendTextMessage(sender, "To add a task, message in this format.\nadd:description-dd/mm/yyy\nadd:description-today\nadd:description-tomorrow\n", token)
+            sendTextMessage(sender, "To add a task, message in below format.\nadd:description-dd/mm/yyy\nadd:description-today\nadd:description-tomorrow\nFor more commands type : help -add ", token)
           } else if(payload == "view_task") {
-            sendTextMessage(sender, "To view a task, message in this format.\n'view:today' - Display Todays task\n'view:upcoming' - Display Upcoming Task\n'view:completed' - Display Completed Tasks\n", token)
+            sendTextMessage(sender, "To view a task, message in below format.\n'view:today' - Display Todays task\n'view:upcoming' - Display Upcoming Task\n'view:completed' - Display Completed Tasks\nFor more commands type : help -view", token)
           } else if(payload == "delete_task") {
-            sendTextMessage(sender, "To delete a task, message in this format.\n'del:all ' - To delete all tasks\n'del:dd/mm/yyy dd/mm/yyy' - To delete tasks between two range\n'del:dd/mm/yyyy hh:mm' - To delete specific task in particular time\n", token)
+            sendTextMessage(sender, "To delete a task, message in below format.\n'del:all ' - To delete all tasks\n'del:dd/mm/yyy dd/mm/yyy' - To delete tasks between two range\n'del:dd/mm/yyyy hh:mm' - To delete specific task in particular time\nFor more commands type : help -del", token)
           }
           continue
       }
