@@ -97,15 +97,18 @@ function sendGenericMessage(sender) {
                         "type": "postback",
                         "title": "Create Task",
                         "payload": "create_task",
-                    }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "View your task",
-                    "image_url": "http://www.pd4pic.com/images/icon-folder-open-button-documents-document.png",
-                    "buttons": [{
+                    },{
                         "type": "postback",
-                        "title": "View Task",
-                        "payload": "view_task",
+                        "title": "View Today's Task",
+                        "payload": "view_today_task",
+                    },{
+                        "type": "postback",
+                        "title": "View Upcoming Tasks",
+                        "payload": "view_upcoming_task",
+                    },{
+                        "type": "postback",
+                        "title": "Views Tasks Within Range",
+                        "payload": "view_range_task",
                     }],
                 }]
             }
