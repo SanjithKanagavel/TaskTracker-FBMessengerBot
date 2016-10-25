@@ -21,7 +21,6 @@ let generalMessage = {
                     "payload": "create_task",
                 }],
             }, {
-                "title": "View Tasks",
                 "subtitle": "View your task",
                 "image_url": "http://www.pd4pic.com/images/icon-folder-open-button-documents-document.png",
                 "buttons": [{
@@ -142,11 +141,10 @@ app.post('/webhook/', function (req, res) {
         let text = JSON.stringify(event.postback)
         let payload = event.postback.payload
           if(payload == "create_task") {
-            sendTextMessage(sender, "Great! Lets create them now. Type in the below format to create a task.", token)
-            sendTextMessage(sender, "description-dd/mm/yyy\ndescription-today\ndescription-tomorrow\n", token)
+            sendTextMessage(sender, "Type in the below format to create a task.\ndescription-dd/mm/yyy\ndescription-today\ndescription-tomorrow\n", token)
             //sendGenericMessage(sender,1)
           } else if(payload == "view_task") {
-            sendTextMessage(sender, "Great! Lets view them now.", token)
+            //sendTextMessage(sender, "Great! Lets view them now.", token)
             sendGenericMessage(sender,2)
           } else if(payload == "delete_task") {
             sendTextMessage(sender, "Great! Lets view them now.", token)
