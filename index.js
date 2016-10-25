@@ -54,7 +54,11 @@ app.post('/webhook/', function (req, res) {
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
-        sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+        if(text == "create_task") {
+          sendTextMessage(sender, "Great! Lets create them now.", token)
+        } else if(text == "view_task") {
+          sendTextMessage(sender, "Great! Lets view them now.", token)
+        }
         continue
       }
     }
@@ -86,26 +90,22 @@ function sendGenericMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                    "title": "Create your task",
+                    "subtitle": "Creating task is simple",
+                    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Press_button_Wikimedia_CH.svg",
                     "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.messenger.com",
-                        "title": "web url"
-                    }, {
                         "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
+                        "title": "Create Task",
+                        "payload": "create_task",
                     }],
                 }, {
                     "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "subtitle": "View your task",
+                    "image_url": "http://www.pd4pic.com/images/icon-folder-open-button-documents-document.png",
                     "buttons": [{
                         "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "title": "View Task",
+                        "payload": "view_task",
                     }],
                 }]
             }
