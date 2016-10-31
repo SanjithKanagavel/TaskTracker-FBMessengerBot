@@ -93,17 +93,9 @@ let viewTask = {
     }
 }
 
-/*
-* Firebase Initialization
-*/
 firebase.initializeApp({
     databaseURL: process.env.FIREBASE_DATABASE_URL
 })
-
-/*
-* App server Startup settings
-*/
-
 app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -121,18 +113,29 @@ app.post('/webhook/', function (req, res) {
       if (event.message && event.message.text) {
         let text = event.message.text
         if(text.startsWith("add:")) {
-          //new task creation
+            if(text.endsWith("-today")) {
+              sendTextMessage("add-today",token);
+            }
+            else if(text.endsWith("-tomorrow")) {
+              sendTextMessage("add-tomorrow",token);
+            }
         } else if (text.startsWith("view:")) {
-          //view task section
+            if(text.contains("view-today")) {
+              sendTextMessage("view-today",token);
+            } else if(text.contains("view:upcoming")) {
+              sendTextMessage("view-upcoming",token);
+            } else if(text.contains("view:completed")) {
+              sendTextMessage("view-completed",token);
+            }
         }
         else if (text.startsWith("del:")) {
-          //delete task section
-        } else if(text.startsWith("help -add")) {
-
-        } else if(text.startsWith("help -view")) {
-
-        } else if(text.startsWith("help -del")) {
-          
+          if(text.contains("del:all")) {
+            sendTextMessage("del:all",token);
+              //all
+          } else if(text.contains("del")) {
+            sendTextMessage("del",token);
+              //1. date 2.range
+          }
         }
         else {
           sendGenericMessage(sender,0)
@@ -144,11 +147,11 @@ app.post('/webhook/', function (req, res) {
         let text = JSON.stringify(event.postback)
         let payload = event.postback.payload
           if(payload == "create_task") {
-            sendTextMessage(sender, "To add a task, message in below format.\nadd:description-dd/mm/yyy\nadd:description-today\nadd:description-tomorrow\nFor more commands type : help -add ", token)
+            sendTextMessage(sender, "To add a task, message in below format.\nadd:description-dd/mm/yyy\nadd:description-today\nadd:description-tomorrow", token) //\nFor more commands type : help -add
           } else if(payload == "view_task") {
-            sendTextMessage(sender, "To view a task, message in below format.\n'view:today' - Display Todays task\n'view:upcoming' - Display Upcoming Task\n'view:completed' - Display Completed Tasks\nFor more commands type : help -view", token)
+            sendTextMessage(sender, "To view a task, message in below format.\n'view:today' - Display Todays task\n'view:upcoming' - Display Upcoming Task\n'view:completed' - Display Completed Tasks", token) //\nFor more commands type : help -view
           } else if(payload == "delete_task") {
-            sendTextMessage(sender, "To delete a task, message in below format.\n'del:all ' - To delete all tasks\n'del:dd/mm/yyy dd/mm/yyy' - To delete tasks between two range\n'del:dd/mm/yyyy hh:mm' - To delete specific task in particular time\nFor more commands type : help -del", token)
+            sendTextMessage(sender, "To delete a task, message in below format.\n'del:all ' - To delete all tasks\n'del:dd/mm/yyy dd/mm/yyy' - To delete tasks between two range\n'del:dd/mm/yyyy hh:mm' - To delete specific task in particular time", token)//\nFor more commands type : help -del
           }
           continue
       }
@@ -210,6 +213,10 @@ function sendGenericMessage(sender,index) {
             console.log('Error: ', response.body.error)
         }
     })
+}
+
+function saveToFirebase(mode, text, datetime){
+
 }
 
 /*app.post('/webhook/', function (req, res) {
