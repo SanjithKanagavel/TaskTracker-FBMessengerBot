@@ -108,7 +108,7 @@ app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.get('/', function (req, res) {
-    //res.send('Hello folks, I am a tracker bot who tracks your tasks.')
+    res.send('Hello folks, I am a tracker bot who tracks your tasks.')
 })
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
@@ -132,6 +132,8 @@ app.post('/webhook/', function (req, res) {
         } else if(text.startsWith("help -view")) {
 
         } else if(text.startsWith("help -del")) {
+          
+        }
         else {
           sendGenericMessage(sender,0)
           continue
