@@ -120,19 +120,19 @@ app.post('/webhook/', function (req, res) {
               sendTextMessage("add-tomorrow",token);
             }
         } else if (text.startsWith("view:")) {
-            if(text.contains("view-today")) {
+            if(text.indexOf("view-today")  != -1 ) {
               sendTextMessage("view-today",token);
-            } else if(text.contains("view:upcoming")) {
+            } else if(text.indexOf("view:upcoming")  != -1 ) {
               sendTextMessage("view-upcoming",token);
-            } else if(text.contains("view:completed")) {
+            } else if(text.indexOf("view:completed") != -1 ) {
               sendTextMessage("view-completed",token);
             }
         }
         else if (text.startsWith("del:")) {
-          if(text.contains("del:all")) {
+          if(text.indexOf("del:all") != -1) {
             sendTextMessage("del:all",token);
               //all
-          } else if(text.contains("del")) {
+          } else if(text.indexOf("del") != -1) {
             sendTextMessage("del",token);
               //1. date 2.range
           }
