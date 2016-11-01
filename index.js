@@ -114,46 +114,35 @@ app.post('/webhook/', function (req, res) {
         let text = event.message.text
         if(text.startsWith("add:")) {
             if(text.endsWith("-today")) {
-              console.log("add-today1");
-              sendTextMessage("add-today",token);
+              sendTextMessage(sender,"add-today")
             }
             else if(text.endsWith("-tomorrow")) {
-              console.log("add-tomorrow1");
-              sendTextMessage("add-tomorrow",token);
+              sendTextMessage(sender,"add-tomorrow");
             }else {
-              console.log(text);
-              sendTextMessage(text,token);
+              sendTextMessage(sender,text)
             }
         } else if (text.startsWith("view:")) {
             if(text.indexOf("view:today")  != -1 ) {
-              console.log("view:today1");
-              sendTextMessage("view:today",token);
+              sendTextMessage(sender,"view:today")
             } else if(text.indexOf("view:upcoming")  != -1 ) {
-              console.log("view:upcoming1");
-              sendTextMessage("view:upcoming",token);
+              sendTextMessage(sender,"view:upcoming")
             } else if(text.indexOf("view:completed") != -1 ) {
-              console.log("view:completed1");
-              sendTextMessage("view:completed",token);
+              sendTextMessage(sender,"view:completed")
             } else {
-              console.log(text)
-              sendTextMessage(text,token);
+              sendTextMessage(sender,text)
             }
         }
         else if (text.startsWith("del:")) {
           if(text.indexOf("del:all") != -1) {
-            console.log("del:all1")
-            sendTextMessage("del:all",token);
-              //all
+            sendTextMessage(sender,"del:all")
           } else if(text.indexOf("del") != -1) {
-            console.log("del1")
-            sendTextMessage("del",token);
+            sendTextMessage(sender,"del")
           } else {
-            console.log(text)
-            sendTextMessage(text,token);
+            sendTextMessage(sender,token)
           }
         }
         else {
-          console.log(text)
+          sendTextMessage(sender,text)
           sendGenericMessage(sender,0)
           continue
         }
