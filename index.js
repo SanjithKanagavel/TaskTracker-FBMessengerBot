@@ -114,36 +114,46 @@ app.post('/webhook/', function (req, res) {
         let text = event.message.text
         if(text.startsWith("add:")) {
             if(text.endsWith("-today")) {
+              console.log("add-today");
               sendTextMessage("add-today",token);
             }
             else if(text.endsWith("-tomorrow")) {
+              console.log("add-tomorrow");
               sendTextMessage("add-tomorrow",token);
             }else {
+              console.log(text);
               sendTextMessage(text,token);
             }
         } else if (text.startsWith("view:")) {
             if(text.indexOf("view:today")  != -1 ) {
-              sendTextMessage("view-today",token);
+              console.log("view:today");
+              sendTextMessage("view:today",token);
             } else if(text.indexOf("view:upcoming")  != -1 ) {
+              console.log("view:upcoming");
               sendTextMessage("view:upcoming",token);
             } else if(text.indexOf("view:completed") != -1 ) {
+              console.log("view:completed");
               sendTextMessage("view:completed",token);
             } else {
+              console.log(text)
               sendTextMessage(text,token);
             }
         }
         else if (text.startsWith("del:")) {
           if(text.indexOf("del:all") != -1) {
+            console.log("del:all")
             sendTextMessage("del:all",token);
               //all
           } else if(text.indexOf("del") != -1) {
+            console.log("del")
             sendTextMessage("del",token);
           } else {
+            console.log(text)
             sendTextMessage(text,token);
           }
         }
         else {
-          sendTextMessage(text,token);
+          console.log(text)          
           sendGenericMessage(sender,0)
           continue
         }
