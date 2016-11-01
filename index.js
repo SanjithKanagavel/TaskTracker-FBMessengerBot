@@ -118,6 +118,8 @@ app.post('/webhook/', function (req, res) {
             }
             else if(text.endsWith("-tomorrow")) {
               sendTextMessage("add-tomorrow",token);
+            }else {
+              sendTextMessage(text,token);
             }
         } else if (text.startsWith("view:")) {
             if(text.indexOf("view:today")  != -1 ) {
@@ -126,6 +128,8 @@ app.post('/webhook/', function (req, res) {
               sendTextMessage("view:upcoming",token);
             } else if(text.indexOf("view:completed") != -1 ) {
               sendTextMessage("view:completed",token);
+            } else {
+              sendTextMessage(text,token);
             }
         }
         else if (text.startsWith("del:")) {
@@ -134,6 +138,8 @@ app.post('/webhook/', function (req, res) {
               //all
           } else if(text.indexOf("del") != -1) {
             sendTextMessage("del",token);
+          } else {
+            sendTextMessage(text,token);
           }
         }
         else {
