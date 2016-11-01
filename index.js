@@ -114,11 +114,11 @@ app.post('/webhook/', function (req, res) {
         let text = event.message.text
         if(text.startsWith("add:")) {
             if(text.endsWith("-today")) {
-              console.log("add-today");
+              console.log("add-today1");
               sendTextMessage("add-today",token);
             }
             else if(text.endsWith("-tomorrow")) {
-              console.log("add-tomorrow");
+              console.log("add-tomorrow1");
               sendTextMessage("add-tomorrow",token);
             }else {
               console.log(text);
@@ -126,13 +126,13 @@ app.post('/webhook/', function (req, res) {
             }
         } else if (text.startsWith("view:")) {
             if(text.indexOf("view:today")  != -1 ) {
-              console.log("view:today");
+              console.log("view:today1");
               sendTextMessage("view:today",token);
             } else if(text.indexOf("view:upcoming")  != -1 ) {
-              console.log("view:upcoming");
+              console.log("view:upcoming1");
               sendTextMessage("view:upcoming",token);
             } else if(text.indexOf("view:completed") != -1 ) {
-              console.log("view:completed");
+              console.log("view:completed1");
               sendTextMessage("view:completed",token);
             } else {
               console.log(text)
@@ -141,11 +141,11 @@ app.post('/webhook/', function (req, res) {
         }
         else if (text.startsWith("del:")) {
           if(text.indexOf("del:all") != -1) {
-            console.log("del:all")
+            console.log("del:all1")
             sendTextMessage("del:all",token);
               //all
           } else if(text.indexOf("del") != -1) {
-            console.log("del")
+            console.log("del1")
             sendTextMessage("del",token);
           } else {
             console.log(text)
@@ -153,7 +153,7 @@ app.post('/webhook/', function (req, res) {
           }
         }
         else {
-          console.log(text)          
+          console.log(text)
           sendGenericMessage(sender,0)
           continue
         }
