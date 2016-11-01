@@ -143,6 +143,7 @@ app.post('/webhook/', function (req, res) {
           }
         }
         else {
+          sendTextMessage(text,token);
           sendGenericMessage(sender,0)
           continue
         }
